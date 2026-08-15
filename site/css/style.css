@@ -1137,28 +1137,31 @@ ul {
 .cta-highlight {
   position: relative;
   display: inline-block;
-  color: var(--cream);
-  transition: color .6s ease .35s;
+  font-style: italic;
+  color: rgba(255, 255, 255, .8);
+  transition: color .6s ease .3s;
 }
 
 .cta-highlight::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0;
-  height: 3px;
+  left: 2px;
+  right: 2px;
+  bottom: -5px;
+  height: 1.5px;
   border-radius: 2px;
-  background: var(--cream);
-  transition: width .9s cubic-bezier(.65, 0, .35, 1) .35s;
+  background: linear-gradient(90deg, transparent 0%, var(--green-light) 15%, var(--green-light) 85%, transparent 100%);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .85s cubic-bezier(.65, 0, .35, 1) .3s;
 }
 
 .cta-banner.is-visible .cta-highlight {
-  color: var(--white);
+  color: var(--green-light);
 }
 
 .cta-banner.is-visible .cta-highlight::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 .cta-actions {
