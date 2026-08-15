@@ -504,21 +504,20 @@ ul {
 .hero-dots {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 5px;
 }
 
 .hero-dot {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  width: 34px;
+  justify-content: center;
+  width: 18px;
   height: 24px;
   flex-shrink: 0;
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
-  contain: layout paint;
 }
 
 .hero-dot-circle {
@@ -526,8 +525,9 @@ ul {
   height: 8px;
   border-radius: 999px;
   background: rgba(255, 255, 255, .4);
-  transition: background .25s ease, width .3s ease;
-  will-change: width;
+  transform: scale(1);
+  transition: background .25s ease, transform .25s ease;
+  will-change: transform;
 }
 
 .hero-dot:hover .hero-dot-circle {
@@ -536,22 +536,22 @@ ul {
 
 .hero-dot.is-active .hero-dot-circle {
   background: var(--green-light);
-  animation: heroDotToLine var(--hero-dot-duration, 4s) linear forwards;
+  animation: heroDotGrow var(--hero-dot-duration, 4s) linear forwards;
 }
 
 #heroSlider:hover .hero-dot.is-active .hero-dot-circle {
   animation-play-state: paused;
 }
 
-@keyframes heroDotToLine {
-  from { width: 8px; }
-  to { width: 34px; }
+@keyframes heroDotGrow {
+  from { transform: scale(1); }
+  to { transform: scale(2); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-dot.is-active .hero-dot-circle {
     animation: none;
-    width: 34px;
+    transform: scale(1.6);
   }
 }
 
