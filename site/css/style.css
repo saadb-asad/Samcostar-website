@@ -503,27 +503,80 @@ ul {
 
 .hero-dots {
   display: flex;
-  gap: 10px;
+  gap: 22px;
 }
 
 .hero-dot {
-  width: 30px;
-  height: 4px;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, .32);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
   border: none;
-  cursor: pointer;
   padding: 0;
-  transition: background .25s ease, width .25s ease;
+  cursor: pointer;
 }
 
-.hero-dot.is-active {
-  background: var(--white);
-  width: 44px;
+.hero-dot-num {
+  font-family: var(--font-display);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: rgba(255, 255, 255, .45);
+  transition: color .25s ease;
 }
 
-.hero-dot:hover {
-  background: rgba(255, 255, 255, .6);
+.hero-dot-track {
+  position: relative;
+  width: 26px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, .25);
+  overflow: hidden;
+  transition: width .3s cubic-bezier(.65, 0, .35, 1);
+}
+
+.hero-dot-fill {
+  position: absolute;
+  inset: 0;
+  width: 0;
+  background: var(--green-light);
+  transform-origin: left;
+}
+
+.hero-dot.is-active .hero-dot-num {
+  color: var(--white);
+}
+
+.hero-dot.is-active .hero-dot-track {
+  width: 46px;
+}
+
+.hero-dot.is-active .hero-dot-fill {
+  animation: heroDotFill var(--hero-dot-duration, 4s) linear forwards;
+}
+
+#heroSlider:hover .hero-dot.is-active .hero-dot-fill {
+  animation-play-state: paused;
+}
+
+.hero-dot:hover .hero-dot-num {
+  color: rgba(255, 255, 255, .8);
+}
+
+.hero-dot:hover .hero-dot-track {
+  background: rgba(255, 255, 255, .4);
+}
+
+@keyframes heroDotFill {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-dot.is-active .hero-dot-fill {
+    animation: none;
+    width: 100%;
+  }
 }
 
 .hero-arrows {
@@ -1374,7 +1427,16 @@ ul {
   justify-content: center;
   box-shadow: var(--shadow-lg);
   z-index: 900;
-  transition: transform .2s ease;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(.85) translateY(8px);
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+.float-whatsapp.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1) translateY(0);
 }
 
 .float-whatsapp:hover {

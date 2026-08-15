@@ -14,9 +14,11 @@
   };
   var scrollTicking = false;
   var hysteresis = 24;
+  var floatWhatsapp = document.getElementById("floatWhatsapp");
   var applyScrollState = function () {
     if (window.scrollY > scrollThreshold) header.classList.add("scrolled");
     else if (window.scrollY < scrollThreshold - hysteresis) header.classList.remove("scrolled");
+    if (floatWhatsapp) floatWhatsapp.classList.toggle("is-visible", header.classList.contains("scrolled"));
     scrollTicking = false;
   };
   var onScroll = function () {
@@ -66,6 +68,8 @@
     var current = 0;
     var slideCount = slides.length;
     var autoplayTimer = null;
+    var AUTOPLAY_MS = 4000;
+    heroSlider.style.setProperty("--hero-dot-duration", AUTOPLAY_MS + "ms");
 
     var goTo = function (index) {
       current = (index + slideCount) % slideCount;
@@ -78,7 +82,7 @@
 
     var startAutoplay = function () {
       stopAutoplay();
-      autoplayTimer = window.setInterval(next, 6000);
+      autoplayTimer = window.setInterval(next, AUTOPLAY_MS);
     };
     var stopAutoplay = function () {
       if (autoplayTimer) window.clearInterval(autoplayTimer);
