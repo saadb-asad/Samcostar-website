@@ -239,9 +239,10 @@ ul {
   box-shadow: 0 16px 40px rgba(0, 0, 0, .28);
   transition: max-width .38s cubic-bezier(.65, 0, .35, 1), height .38s cubic-bezier(.65, 0, .35, 1),
     border-radius .38s cubic-bezier(.65, 0, .35, 1), padding .38s cubic-bezier(.65, 0, .35, 1),
-    background .38s cubic-bezier(.65, 0, .35, 1), backdrop-filter .38s cubic-bezier(.65, 0, .35, 1),
-    border-color .38s cubic-bezier(.65, 0, .35, 1), box-shadow .38s cubic-bezier(.65, 0, .35, 1);
+    border-color .38s cubic-bezier(.65, 0, .35, 1);
   will-change: max-width, height, border-radius, padding;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .site-header.scrolled .header-inner {
@@ -259,6 +260,7 @@ ul {
 .brand-logo {
   height: 52px;
   width: auto;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .55)) drop-shadow(0 0 14px rgba(0, 0, 0, .35));
 }
 
 .header-actions {
@@ -787,6 +789,8 @@ ul {
   width: max-content;
   padding: 0 24px;
   animation: carouselLoop 46s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .carousel-row:hover .carousel-track {
@@ -863,6 +867,8 @@ ul {
   gap: 16px;
   width: max-content;
   animation: extraLoop 28s linear infinite reverse;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .extra-row:hover .extra-track {

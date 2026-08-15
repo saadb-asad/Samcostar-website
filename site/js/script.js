@@ -13,9 +13,10 @@
     scrollThreshold = heroEl ? Math.max(heroEl.offsetHeight - getHeaderHeight(), 48) : 48;
   };
   var scrollTicking = false;
+  var hysteresis = 24;
   var applyScrollState = function () {
     if (window.scrollY > scrollThreshold) header.classList.add("scrolled");
-    else header.classList.remove("scrolled");
+    else if (window.scrollY < scrollThreshold - hysteresis) header.classList.remove("scrolled");
     scrollTicking = false;
   };
   var onScroll = function () {
