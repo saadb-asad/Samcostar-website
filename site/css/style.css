@@ -522,10 +522,9 @@ ul {
 .hero-dot-circle {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  border-radius: 999px;
   background: rgba(255, 255, 255, .4);
-  transform: scale(1);
-  transition: background .25s ease, transform .25s ease;
+  transition: background .25s ease, width .3s ease;
 }
 
 .hero-dot:hover .hero-dot-circle {
@@ -534,22 +533,22 @@ ul {
 
 .hero-dot.is-active .hero-dot-circle {
   background: var(--green-light);
-  animation: heroDotGrow var(--hero-dot-duration, 4s) cubic-bezier(.4, 0, .2, 1) forwards;
+  animation: heroDotToLine var(--hero-dot-duration, 4s) linear forwards;
 }
 
 #heroSlider:hover .hero-dot.is-active .hero-dot-circle {
   animation-play-state: paused;
 }
 
-@keyframes heroDotGrow {
-  from { transform: scale(1); }
-  to { transform: scale(2.25); }
+@keyframes heroDotToLine {
+  from { width: 8px; }
+  to { width: 34px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-dot.is-active .hero-dot-circle {
     animation: none;
-    transform: scale(1.8);
+    width: 34px;
   }
 }
 
