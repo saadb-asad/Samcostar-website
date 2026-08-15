@@ -487,6 +487,7 @@ ul {
   line-height: 1.6;
   text-shadow: 0 1px 8px rgba(0, 0, 0, .5);
   margin-bottom: 20px;
+  min-height: 4.8em;
 }
 
 .hero-panel.is-active .hero-panel-copy {
