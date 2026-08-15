@@ -508,6 +508,7 @@ ul {
 }
 
 .hero-dot {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -521,38 +522,54 @@ ul {
   cursor: pointer;
 }
 
-.hero-dot-circle {
-  width: 26px;
+.hero-dot-rest {
+  width: 8px;
   height: 8px;
-  flex-shrink: 0;
+  border-radius: 50%;
   background: rgba(255, 255, 255, .4);
-  clip-path: inset(0 18px 0 0 round 999px);
-  transition: background .25s ease;
-  will-change: clip-path;
+  transition: background .25s ease, opacity .2s ease;
 }
 
-.hero-dot:hover .hero-dot-circle {
+.hero-dot-grow {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 26px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--green-light);
+  transform-origin: left center;
+  transform: translateY(-50%) scaleX(0);
+  opacity: 0;
+  will-change: transform;
+}
+
+.hero-dot:hover .hero-dot-rest {
   background: rgba(255, 255, 255, .7);
 }
 
-.hero-dot.is-active .hero-dot-circle {
-  background: var(--green-light);
+.hero-dot.is-active .hero-dot-rest {
+  opacity: 0;
+}
+
+.hero-dot.is-active .hero-dot-grow {
+  opacity: 1;
   animation: heroDotToLine var(--hero-dot-duration, 4s) linear forwards;
 }
 
-#heroSlider:hover .hero-dot.is-active .hero-dot-circle {
+#heroSlider:hover .hero-dot.is-active .hero-dot-grow {
   animation-play-state: paused;
 }
 
 @keyframes heroDotToLine {
-  from { clip-path: inset(0 18px 0 0 round 999px); }
-  to { clip-path: inset(0 0 0 0 round 999px); }
+  from { transform: translateY(-50%) scaleX(.3077); }
+  to { transform: translateY(-50%) scaleX(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-dot.is-active .hero-dot-circle {
+  .hero-dot.is-active .hero-dot-grow {
     animation: none;
-    clip-path: inset(0 0 0 0 round 999px);
+    transform: translateY(-50%) scaleX(1);
   }
 }
 
