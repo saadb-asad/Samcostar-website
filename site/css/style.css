@@ -335,8 +335,8 @@ ul {
 =================================================================== */
 .hero {
   position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: calc(100vh - 20px);
+  min-height: calc(100dvh - 20px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
