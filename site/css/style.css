@@ -510,13 +510,15 @@ ul {
 .hero-dot {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 24px;
+  justify-content: flex-start;
+  width: 34px;
   height: 24px;
+  flex-shrink: 0;
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
+  contain: layout paint;
 }
 
 .hero-dot-circle {
@@ -525,6 +527,7 @@ ul {
   border-radius: 999px;
   background: rgba(255, 255, 255, .4);
   transition: background .25s ease, width .3s ease;
+  will-change: width;
 }
 
 .hero-dot:hover .hero-dot-circle {
