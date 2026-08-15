@@ -233,8 +233,8 @@ ul {
   gap: 20px;
   padding: 0 22px;
   border-radius: 999px;
-  background: rgba(15, 14, 10, .4);
-  backdrop-filter: blur(16px) saturate(140%);
+  background: rgba(12, 11, 8, .58);
+  backdrop-filter: blur(18px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, .14);
   box-shadow: 0 16px 40px rgba(0, 0, 0, .28);
   transition: max-width .38s cubic-bezier(.65, 0, .35, 1), height .38s cubic-bezier(.65, 0, .35, 1),
@@ -260,7 +260,7 @@ ul {
 .brand-logo {
   height: 52px;
   width: auto;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .55)) drop-shadow(0 0 14px rgba(0, 0, 0, .35));
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .75)) drop-shadow(0 0 18px rgba(0, 0, 0, .55)) drop-shadow(0 0 30px rgba(0, 0, 0, .35));
 }
 
 .header-actions {
@@ -504,16 +504,17 @@ ul {
 .hero-dots {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
 }
 
 .hero-dot {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 18px;
+  justify-content: flex-start;
+  width: 20px;
   height: 24px;
   flex-shrink: 0;
+  overflow: visible;
   background: none;
   border: none;
   padding: 0;
@@ -521,13 +522,13 @@ ul {
 }
 
 .hero-dot-circle {
-  width: 8px;
+  width: 26px;
   height: 8px;
-  border-radius: 999px;
+  flex-shrink: 0;
   background: rgba(255, 255, 255, .4);
-  transform: scale(1);
-  transition: background .25s ease, transform .25s ease;
-  will-change: transform;
+  clip-path: inset(0 18px 0 0 round 999px);
+  transition: background .25s ease;
+  will-change: clip-path;
 }
 
 .hero-dot:hover .hero-dot-circle {
@@ -536,22 +537,22 @@ ul {
 
 .hero-dot.is-active .hero-dot-circle {
   background: var(--green-light);
-  animation: heroDotGrow var(--hero-dot-duration, 4s) linear forwards;
+  animation: heroDotToLine var(--hero-dot-duration, 4s) linear forwards;
 }
 
 #heroSlider:hover .hero-dot.is-active .hero-dot-circle {
   animation-play-state: paused;
 }
 
-@keyframes heroDotGrow {
-  from { transform: scale(1); }
-  to { transform: scale(2); }
+@keyframes heroDotToLine {
+  from { clip-path: inset(0 18px 0 0 round 999px); }
+  to { clip-path: inset(0 0 0 0 round 999px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-dot.is-active .hero-dot-circle {
     animation: none;
-    transform: scale(1.6);
+    clip-path: inset(0 0 0 0 round 999px);
   }
 }
 
