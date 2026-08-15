@@ -234,7 +234,7 @@ ul {
   padding: 0 22px;
   border-radius: 999px;
   background: rgba(12, 11, 8, .58);
-  backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, .14);
   box-shadow: 0 16px 40px rgba(0, 0, 0, .28);
   transition: max-width .38s cubic-bezier(.65, 0, .35, 1), height .38s cubic-bezier(.65, 0, .35, 1),
@@ -363,7 +363,7 @@ ul {
   background-position: center;
   transform: scale(1.05);
   opacity: 0;
-  transition: opacity 1.1s ease;
+  transition: opacity .6s ease;
 }
 
 .hero-slide.is-active {
@@ -389,12 +389,10 @@ ul {
 @keyframes heroRise {
   from {
     opacity: 0;
-    transform: translateY(30px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -407,8 +405,7 @@ ul {
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--white);
-  background: rgba(8, 7, 5, .5);
-  backdrop-filter: blur(10px);
+  background: rgba(8, 7, 5, .68);
   border: 1px solid rgba(255, 255, 255, .16);
   padding: 10px 22px;
   border-radius: 999px;
