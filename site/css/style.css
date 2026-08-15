@@ -1157,7 +1157,7 @@ ul {
 }
 
 .cta-banner.is-visible .cta-highlight {
-  color: var(--green-light);
+  color: var(--white);
 }
 
 .cta-banner.is-visible .cta-highlight::after {
