@@ -1128,6 +1128,33 @@ ul {
   font-size: var(--text-md);
 }
 
+.cta-highlight {
+  position: relative;
+  display: inline-block;
+  color: var(--cream);
+  transition: color .6s ease .35s;
+}
+
+.cta-highlight::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--cream);
+  transition: width .9s cubic-bezier(.65, 0, .35, 1) .35s;
+}
+
+.cta-banner.is-visible .cta-highlight {
+  color: var(--white);
+}
+
+.cta-banner.is-visible .cta-highlight::after {
+  width: 100%;
+}
+
 .cta-actions {
   position: relative;
   z-index: 2;
